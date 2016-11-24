@@ -1,0 +1,39 @@
+{	"extensionName":"Custom Serial Communication",
+	"description":"Allow you to create a custom Serial Communication with Wifi or Bluetooth modules",
+	"extensionType":"serial",
+	"javascriptURL":"js/serial.js",
+	"author":"Fernando Sousa",
+	"homepage":"https://github.com/iFernandoSousa/mBlock_serial_communicator",
+	"sort":0,
+	"firmware":"1.0.0",
+	"extensionPort":"0",
+	"blockSpecs": [
+		["w", "Serial data with Speed %n in RX %n and TX %n","setup", "9600", "2", "3",
+		{"setup":"serialSoft.begin({0});\n","inc":"","def":"SoftwareSerial serialSoft({1}, {2});\n","work":"","loop":""}],
+
+		["b","data is available?","isAvailableAt",
+		{"setup":"","inc":"","def":"","work":"serialSoft.available()","loop":""}],
+
+		["R","read byte line","readLine",
+		{"setup":"","inc":"","def":"","work":"serialSoft.read()","loop":""}],
+
+		["R","read text line","readLineText",
+		{"setup":"","inc":"","def":"","work":"serialSoft.readString()","loop":""}],
+
+		["w", "write %s","writeLine", "hello",
+		{"setup":"","inc":"","def":"String writeMessage = \"\";","work":"writeMessage = {0};\nfor (int i = 0; i < writeMessage.length(); i++) {\nserialSoft.write(writeMessage[i]);\n}\n","loop":""}],
+
+		["-"],
+		["-"],
+
+		["R","get text from position %n in %s split by %s","getValue", "0", "hello;world", ";",
+		{"setup":"","inc":"#include \"stringUtil.h\"\n","def":"stringUtil stringUtil;\n","work":"stringUtil.getValue({1}, {2}, {0})","loop":""}],
+
+		["R","get length of array split %s by %s","getLength", "hello;world", ";",
+		{"setup":"","inc":"#include \"stringUtil.h\"\n","def":"stringUtil stringUtil;\n","work":"stringUtil.getLength({0}, {1})","loop":""}],
+	],
+	"menus": {
+	},
+	"translators":{
+	}
+}
