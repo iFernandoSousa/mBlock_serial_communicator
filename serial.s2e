@@ -22,15 +22,6 @@
 
 		["w", "write %s","writeLine", "hello",
 		{"setup":"","inc":"","def":"String writeMessage = \"\";","work":"writeMessage = {0};\nfor (int i = 0; i < writeMessage.length(); i++) {\nserialSoft.write(writeMessage[i]);\n}\n","loop":""}],
-
-		["-"],
-		["-"],
-
-		["R","get text from position %n in %s split by %s","getValue", "0", "hello;world", ";",
-		{"setup":"","inc":"#include \"stringUtil.h\"\n","def":"stringUtil stringUtil;\n","work":"stringUtil.getValue({1}, {2}, {0})","loop":""}],
-
-		["R","get length of array split %s by %s","getLength", "hello;world", ";",
-		{"setup":"","inc":"#include \"stringUtil.h\"\n","def":"stringUtil stringUtil;\n","work":"stringUtil.getLength({0}, {1})","loop":""}],
 	],
 	"menus": {
 	},
